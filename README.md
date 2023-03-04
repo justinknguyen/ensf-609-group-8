@@ -1,5 +1,7 @@
 # 2023 Software-Nursing Hackathon
 
+Information fragmentation or the lack of information sharing between health services is an issue in health care (Everson et al., 2017). Within Alberta Health Services (AHS), there is currently no communication of Health Link visits with Emergency Departments (EDs) because each service uses a different computer system (M. Kim, personal communication, January 21, 2023). We are working to design a computer application using QR codes to share Health Link visit information with Emergency Departments (EDs). 
+
 ## Login Information
 Username: `user`  Password: `pass`
 
