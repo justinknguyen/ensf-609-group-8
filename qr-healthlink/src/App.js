@@ -7,6 +7,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { AppContext } from "./lib/contextLib";
 import Routes from "./Routes";
 import "./App.css";
+import { createGlobalStyle } from "styled-components";
+
+const MainContainer = createGlobalStyle`
+  * {
+    box-sizing: border-box;
+  }
+`;
 
 function App() {
   const nav = useNavigate();
@@ -20,6 +27,7 @@ function App() {
 
   return (
     <div>
+      <MainContainer />
       <AppBar position="static">
         <Toolbar className="navStyle">
           {isAuthenticated ? (
