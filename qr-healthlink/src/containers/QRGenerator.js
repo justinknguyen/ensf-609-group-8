@@ -87,6 +87,8 @@ export default function QRGenerator() {
     });
   }, [plaintext]);
 
+  const charCount = summary.length;
+
   return (
     <Layout>
       <Form>
@@ -97,7 +99,8 @@ export default function QRGenerator() {
             <Input
               type={"text"}
               value={name}
-              placeholder={"e.g. Jane Doe"}
+              placeholder={"Patient Name"}
+              maxLength={30}
               onChange={(event) => {
                 nameSet(event.target.value);
               }}
@@ -106,8 +109,10 @@ export default function QRGenerator() {
           <label>
             <InputTitle>Date of Birth</InputTitle>
             <Input
-              type={"text"}
+              type={"date"}
               value={dateOfBirth}
+              placeholder={"DD/MM/YEAR"}
+              maxLength={10}
               onChange={(event) => {
                 dateOfBirthSet(event.target.value);
               }}
@@ -118,7 +123,8 @@ export default function QRGenerator() {
             <Input
               type={"text"}
               value={albertaHealthNumber}
-              placeholder={"e.g. 123"}
+              placeholder={"Number"}
+              maxLength={9}
               onChange={(event) => {
                 albertaHealthNumberSet(event.target.value);
               }}
@@ -129,7 +135,8 @@ export default function QRGenerator() {
             <Input
               type={"text"}
               value={email}
-              placeholder={"e.g. someone@gmail.com"}
+              placeholder={"Patient Email"}
+              maxLength={30}
               onChange={(event) => {
                 emailSet(event.target.value);
               }}
@@ -140,18 +147,22 @@ export default function QRGenerator() {
             <Input
               type={"text"}
               value={phone}
-              placeholder={"e.g. +1 123 456 7890"}
+              placeholder={"XXX XXX XXXX"}
+              maxLength={12}
               onChange={(event) => {
                 phoneSet(event.target.value);
               }}
             />
           </label>
           <label>
-            <InputTitle>Summary</InputTitle>
+            <InputTitle>
+              Summary (Characters Remaining {2909 - charCount})
+            </InputTitle>
             <Input
               type={"text"}
               value={summary}
-              placeholder={"e.g. Leg fracture"}
+              maxLength={2909}
+              placeholder={"Description of Patients Issues..."}
               onChange={(event) => {
                 summarySet(event.target.value);
               }}
