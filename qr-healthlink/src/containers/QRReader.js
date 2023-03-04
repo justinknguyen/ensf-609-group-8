@@ -1,8 +1,15 @@
 import { React, useState, useEffect } from "react";
 import jsQR from "jsqr";
 import CryptoJS from "crypto-js";
-import { Form, Input, Centered, Layout, Title, Sep } from "../styles";
-import { InputLabel } from "@mui/material";
+import {
+  Form,
+  Input,
+  Centered,
+  InputTitle,
+  Layout,
+  Title,
+  Sep,
+} from "../styles";
 
 export default function QRReader() {
   const [imgDataLink, setimgDataLink] = useState(null);
@@ -67,21 +74,21 @@ export default function QRReader() {
         <div>
           <br />
           <Centered>
-            <input type="file" onChange={handleImgUpload} />
-          </Centered>
-          <Centered>
             {imgDataLink && (
               <a href={imgDataLink} target="_blank" rel="noopener noreferrer">
                 <img src={imgDataLink} alt="QR uploaded" />
               </a>
             )}
           </Centered>
+          <Centered>
+            <input type="file" onChange={handleImgUpload} />
+          </Centered>
           <br />
           <br />
           <Sep />
           <br />
           <label>
-            <InputLabel>Your Code</InputLabel>
+            <InputTitle>Your Code</InputTitle>
             <Input
               type="text"
               onChange={(event) => {
@@ -90,31 +97,31 @@ export default function QRReader() {
             />
           </label>
           {data.error ? (
-            <InputLabel>Error: {data.error}</InputLabel>
+            <InputTitle>Error: {data.error}</InputTitle>
           ) : (
             <>
               <label>
-                <InputLabel>Name</InputLabel>
+                <InputTitle>Name</InputTitle>
                 <Input value={data.name} readOnly />
               </label>
               <label>
-                <InputLabel>Date of Birth</InputLabel>
+                <InputTitle>Date of Birth</InputTitle>
                 <Input value={data.dateOfBirth} readOnly />
               </label>
               <label>
-                <InputLabel>Alberta Health Number</InputLabel>
+                <InputTitle>Alberta Health Number</InputTitle>
                 <Input value={data.albertaHealthNumber} readOnly />
               </label>
               <label>
-                <InputLabel>Email</InputLabel>
+                <InputTitle>Email</InputTitle>
                 <Input value={data.email} readOnly />
               </label>
               <label>
-                <InputLabel>Phone</InputLabel>
+                <InputTitle>Phone</InputTitle>
                 <Input value={data.phone} readOnly />
               </label>
               <label>
-                <InputLabel>Summary</InputLabel>
+                <InputTitle>Summary</InputTitle>
                 <Input value={data.summary} readOnly />
               </label>
             </>
