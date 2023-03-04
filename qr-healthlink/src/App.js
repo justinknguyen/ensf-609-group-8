@@ -16,6 +16,10 @@ const router = createHashRouter([
     path: "/qr-reader",
     element: <QRReader />,
   },
+  {
+    path: "/reader",
+    element: <QrReader />,
+  },
 ]);
 
 function App() {
