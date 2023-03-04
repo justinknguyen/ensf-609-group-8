@@ -39,10 +39,10 @@ function App() {
             <NavButton to="/ensf-609-group-8/home">QR Health Link</NavButton>
             <NavButton to="/ensf-609-group-8/qr-generator">Generate</NavButton>
             <NavButton to="/ensf-609-group-8/qr-reader">Read</NavButton>
-            <NavButton to="/ensf-609-group-8">Logout</NavButton>
+            <NavButton to="/ensf-609-group-8" onClick={handleLogout}>Logout</NavButton>
           </>
         ) : (
-          <NavButton to="/ensf-609-group-8/home">QR Health Link</NavButton>
+          <NavButton>QR Health Link</NavButton>
         )}
       </Nav>
       <AppContext.Provider
