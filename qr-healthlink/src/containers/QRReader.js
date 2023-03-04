@@ -85,13 +85,60 @@ export default function QRReader() {
             onChange={decryptDataFromCode}
           />
         </div>
-        <label htmlFor="summary">Summary:</label>
-        <textarea
-          id="summary"
-          className="input-field summary"
-          value={data.summary}
-          readOnly
-        />
+        <label>
+          <p>Name</p>
+          <textarea
+            id="name"
+            className="input-field summary"
+            value={data.name}
+            readOnly
+          />
+        </label>
+        <label>
+          <p>Date of Birth</p>
+          <textarea
+            id="dateOfBirth"
+            className="input-field summary"
+            value={data.dateOfBirth}
+            readOnly
+          />
+        </label>
+        <label>
+          <p>Alberta Health Number</p>
+          <textarea
+            id="albertaHealthNumber"
+            className="input-field summary"
+            value={data.albertaHealthNumber}
+            readOnly
+          />
+        </label>
+        <label>
+          <p>Email</p>
+          <textarea
+            id="email"
+            className="input-field summary"
+            value={data.email}
+            readOnly
+          />
+        </label>
+        <label>
+          <p>Phone</p>
+          <textarea
+            id="phone"
+            className="input-field summary"
+            value={data.phone}
+            readOnly
+          />
+        </label>
+        <label>
+          <p>Summary</p>
+          <textarea
+            id="summary"
+            className="input-field summary"
+            value={data.summary}
+            readOnly
+          />
+        </label>
       </div>
     </div>
   );
