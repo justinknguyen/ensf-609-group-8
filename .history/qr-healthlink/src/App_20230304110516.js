@@ -16,7 +16,7 @@ function App() {
             variant="h6"
             className="navTitleStyle"
             component={Link}
-            to="/"
+            to="/Hackathon-Group8"
           >
             QR Health Link
           </Typography>

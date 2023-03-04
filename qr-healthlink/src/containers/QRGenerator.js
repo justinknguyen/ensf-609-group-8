@@ -2,7 +2,7 @@ import QR from "qrcode";
 import { useEffect, useState } from "react";
 import CryptoJS from "crypto-js";
 
-export const QRGenerator = () => {
+export default function QRGenerator() {
   const [name, nameSet] = useState("");
   const [dateOfBirth, dateOfBirthSet] = useState("2000-01-01");
   const [albertaHealthNumber, albertaHealthNumberSet] = useState("");

@@ -12,11 +12,14 @@
     ]
   },
   "dependencies": {
+<<<<<<< HEAD
     "crypto-js": "^4.1.1",
     "jsqr": "^1.4.0",
+
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@mui/material": "^5.11.11",
+>>>>>>> 8205ca2 (navbar)
     "qrcode": "^1.5.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
