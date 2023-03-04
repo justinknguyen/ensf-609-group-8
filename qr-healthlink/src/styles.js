@@ -50,7 +50,10 @@ export const Centered = styled.div`
   justify-content: center;
 `;
 
-export const Sep = styled.p``;
+export const Sep = styled.p`
+  border: 1px solid #bfbfbf;
+`;
+
 export const Code = styled.p``;
 
 export const Download = styled.a`
