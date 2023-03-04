@@ -15,7 +15,7 @@ import {
 export default function QRReader() {
   const [imgDataLink, setimgDataLink] = useState(null);
   const [imgData, setimgData] = useState(null);
-  const [data, setData] = useState({ error: "Invalid key" });
+  const [data, setData] = useState({ error: "Enter a Valid Key" });
   const [encryptKey, encryptKeySet] = useState("");
 
   const handleImgUpload = (e) => {
@@ -62,7 +62,7 @@ export default function QRReader() {
         );
         setData(JSON.parse(info));
       } catch (error) {
-        setData({ error: "invalid key" });
+        setData({ error: "Enter a Valid Key" });
         console.error(error);
       }
     }
