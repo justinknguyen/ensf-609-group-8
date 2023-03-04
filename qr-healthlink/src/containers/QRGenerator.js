@@ -3,6 +3,10 @@ import { useEffect, useState } from "react";
 import CryptoJS from "crypto-js";
 import styled from "styled-components";
 
+const Title = styled.h1`
+  font-size: 2rem;
+  font-weight: 500;
+`;
 const Form = styled.div`
   align-content: "center";
   display: "flex";
@@ -11,10 +15,25 @@ const Form = styled.div`
   padding: 1rem;
 `;
 
+const InputTitle = styled.p`
+  font-weight: 500;
+`;
 const Input = styled.input`
   border-radius: 0.25rem;
   padding: 0 1rem;
   width: "100%";
+`;
+const Centered = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: center;
+`;
+const Download = styled.a`
+  background-color: #1976d2;
+  border-radius: 0.75rem;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 1rem;
 `;
 
 export default function QRGenerator() {
@@ -55,10 +74,10 @@ export default function QRGenerator() {
 
   return (
     <Form>
-      <h1>QRGenerator</h1>
+      <Title>QR Generator</Title>
       <div>
         <label>
-          <p>Name</p>
+          <InputTitle>Name</InputTitle>
           <Input
             type={"text"}
             value={name}
@@ -69,7 +88,7 @@ export default function QRGenerator() {
           />
         </label>
         <label>
-          <p>Date of Birth</p>
+          <InputTitle>Date of Birth</InputTitle>
           <Input
             type={"text"}
             value={dateOfBirth}
@@ -80,7 +99,7 @@ export default function QRGenerator() {
           />
         </label>
         <label>
-          <p>Alberta Health Number</p>
+          <InputTitle>Alberta Health Number</InputTitle>
           <Input
             type={"text"}
             value={albertaHealthNumber}
@@ -92,7 +111,7 @@ export default function QRGenerator() {
           />
         </label>
         <label>
-          <p>Email</p>
+          <InputTitle>Email</InputTitle>
           <Input
             type={"text"}
             value={email}
@@ -104,7 +123,7 @@ export default function QRGenerator() {
           />
         </label>
         <label>
-          <p>Phone</p>
+          <InputTitle>Phone</InputTitle>
           <Input
             type={"text"}
             value={phone}
@@ -116,7 +135,7 @@ export default function QRGenerator() {
           />
         </label>
         <label>
-          <p>Summary</p>
+          <InputTitle>Summary</InputTitle>
           <Input
             type={"text"}
             value={summary}
@@ -128,15 +147,24 @@ export default function QRGenerator() {
           />
         </label>
       </div>
+      <br />
+      <hr />
       <div>
-        <p>Encryption code: {key}</p>
-        <p>QR:</p>
-        <img alt="qr" src={qr} />
-        <div>
-          <a href={qr} download={`${key}.png`}>
+        <Centered>
+          <InputTitle>Encryption code</InputTitle>
+        </Centered>
+        <Centered>{key}</Centered>
+        <Centered>
+          <InputTitle>QR:</InputTitle>
+        </Centered>
+        <Centered>
+          <img alt="qr" src={qr} />
+        </Centered>
+        <Centered>
+          <Download href={qr} download={`${key}.png`}>
             Download
-          </a>
-        </div>
+          </Download>
+        </Centered>
       </div>
     </Form>
   );
