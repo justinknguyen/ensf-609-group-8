@@ -12,6 +12,8 @@ import { createGlobalStyle } from "styled-components";
 const MainContainer = createGlobalStyle`
   * {
     box-sizing: border-box;
+    font-family: 'DM Sans';
+    font-weight: 400;
   }
 `;
 
