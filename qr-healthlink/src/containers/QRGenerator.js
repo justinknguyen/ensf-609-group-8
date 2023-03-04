@@ -1,6 +1,21 @@
 import QR from "qrcode";
 import { useEffect, useState } from "react";
 import CryptoJS from "crypto-js";
+import styled from "styled-components";
+
+const Form = styled.div`
+  align-content: "center";
+  display: "flex";
+  flex-direction: "column";
+  justify-content: "center";
+  padding: 1rem;
+`;
+
+const Input = styled.input`
+  border-radius: 0.25rem;
+  padding: 0 1rem;
+  width: "100%";
+`;
 
 export default function QRGenerator() {
   const [name, nameSet] = useState("");
@@ -39,12 +54,12 @@ export default function QRGenerator() {
   }, [plaintext]);
 
   return (
-    <div>
+    <Form>
       <h1>QRGenerator</h1>
       <div>
         <label>
           <p>Name</p>
-          <input
+          <Input
             type={"text"}
             value={name}
             placeholder={"e.g. Jane Doe"}
@@ -55,56 +70,61 @@ export default function QRGenerator() {
         </label>
         <label>
           <p>Date of Birth</p>
-          <input
+          <Input
             type={"text"}
             value={dateOfBirth}
             onChange={(event) => {
               dateOfBirthSet(event.target.value);
             }}
+            style={{ width: "100%" }}
           />
         </label>
         <label>
           <p>Alberta Health Number</p>
-          <input
+          <Input
             type={"text"}
             value={albertaHealthNumber}
             placeholder={"e.g. 123"}
             onChange={(event) => {
               albertaHealthNumberSet(event.target.value);
             }}
+            style={{ width: "100%" }}
           />
         </label>
         <label>
           <p>Email</p>
-          <input
+          <Input
             type={"text"}
             value={email}
             placeholder={"e.g. someone@gmail.com"}
             onChange={(event) => {
               emailSet(event.target.value);
             }}
+            style={{ width: "100%" }}
           />
         </label>
         <label>
           <p>Phone</p>
-          <input
+          <Input
             type={"text"}
             value={phone}
             placeholder={"e.g. +1 123 456 7890"}
             onChange={(event) => {
               phoneSet(event.target.value);
             }}
+            style={{ width: "100%" }}
           />
         </label>
         <label>
           <p>Summary</p>
-          <input
+          <Input
             type={"text"}
             value={summary}
             placeholder={"e.g. Leg fracture"}
             onChange={(event) => {
               summarySet(event.target.value);
             }}
+            style={{ width: "100%" }}
           />
         </label>
       </div>
@@ -118,6 +138,6 @@ export default function QRGenerator() {
           </a>
         </div>
       </div>
-    </div>
+    </Form>
   );
 }
