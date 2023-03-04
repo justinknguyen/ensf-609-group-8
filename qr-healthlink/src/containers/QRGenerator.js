@@ -1,9 +1,9 @@
 import QR from "qrcode";
 import { useEffect, useState } from "react";
 import CryptoJS from "crypto-js";
-import "./QRGenerator.css";
 import {
   Code,
+  Download,
   Input,
   InputTitle,
   Layout,
@@ -197,9 +197,9 @@ export default function QRGenerator() {
             <Code>{key}</Code>
             <InputTitle>QR</InputTitle>
             <img alt="qr" src={qr} />
-            <btn className="Download" onClick={handleDownload}>
+            <Download  onClick={handleDownload}>
               Download
-            </btn>
+            </Download>
           </Centered>
         </div>
       </Form>
