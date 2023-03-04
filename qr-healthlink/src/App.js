@@ -1,8 +1,7 @@
 import { createHashRouter, RouterProvider } from "react-router-dom";
 import { LandingPage } from "./LandingPage";
-import { Page1 } from "./Page1";
-import { Page2 } from "./Page2";
-import QrReader from "./containers/QrReader"
+import { QRGenerator } from "./QRGenerator";
+import { QRReader } from "./QRReader";
 
 const router = createHashRouter([
   {
@@ -10,12 +9,12 @@ const router = createHashRouter([
     element: <LandingPage />,
   },
   {
-    path: "/a",
-    element: <Page1 />,
+    path: "/qr-generator",
+    element: <QRGenerator />,
   },
   {
-    path: "/b",
-    element: <Page2 />,
+    path: "/qr-reader",
+    element: <QRReader />,
   },
   {
     path: "/reader",

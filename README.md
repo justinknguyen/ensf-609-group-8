@@ -1,10 +1,4 @@
-# ensf-609-group-8
-
-2023 Software-Nursing Hackathon
-
-## Login Information
-
-Username: `user` Password: `pass`
+# 2023 Software-Nursing Hackathon
 
 ## Updating the Website
 
