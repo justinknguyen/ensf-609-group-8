@@ -1,0 +1,33 @@
+.navStyle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navTitleStyle {
+  flex-grow: 1;
+  text-decoration: none;
+  color: #fff;
+}
+
+.navButtonStyle {
+  margin-left: 20px;
+  margin-right: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  text-transform: none;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+}
+
+.navButtonStyle:hover {
+  background-color: #3E8E41;
+}
+
+.navButtonStyle:active {
+  background-color: #1E562B;
+}
+

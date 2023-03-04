@@ -1,7 +1,7 @@
 import QR from "qrcode";
 import { useEffect, useState } from "react";
 
-export const QRGenerator = () => {
+export default function QrGenerator() {
   const [name, nameSet] = useState("");
   const [dateOfBirth, dateOfBirthSet] = useState("2000-01-01");
   const [albertaHealthNumber, albertaHealthNumberSet] = useState("");

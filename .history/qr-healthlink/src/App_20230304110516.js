@@ -1,4 +1,3 @@
-
 import React from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
@@ -7,7 +6,6 @@ import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 import Routes from "./Routes";
 import "./App.css";
-
 
 function App() {
   return (
@@ -18,7 +16,7 @@ function App() {
             variant="h6"
             className="navTitleStyle"
             component={Link}
-            to="/"
+            to="/Hackathon-Group8"
           >
             QR Health Link
           </Typography>
