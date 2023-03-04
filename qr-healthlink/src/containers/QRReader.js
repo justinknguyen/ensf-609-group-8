@@ -2,6 +2,7 @@ import { React, useState, useEffect } from "react";
 import jsQR from "jsqr";
 import CryptoJS from "crypto-js";
 import {
+  BigInput,
   Form,
   Input,
   Centered,
@@ -122,7 +123,7 @@ export default function QRReader() {
               </label>
               <label>
                 <InputTitle>Summary</InputTitle>
-                <Input value={data.summary} readOnly />
+                <BigInput type={"text"} rows={4} value={data.summary} readOnly />
               </label>
             </>
           )}
