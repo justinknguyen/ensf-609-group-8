@@ -1,11 +1,13 @@
 import { React, useState, useEffect } from "react";
 import jsQR from "jsqr";
 import CryptoJS from "crypto-js";
+import { Form, Input, Layout, Title } from "../styles";
+import { InputLabel } from "@mui/material";
 
 export default function QRReader() {
   const [imgDataLink, setimgDataLink] = useState(null);
   const [imgData, setimgData] = useState(null);
-  const [data, setData] = useState({});
+  const [data, setData] = useState({ error: "Invalid key" });
   const [encryptKey, encryptKeySet] = useState("");
 
   const handleImgUpload = (e) => {
@@ -59,91 +61,57 @@ export default function QRReader() {
   }, [encryptKey, imgData]);
 
   return (
-    <div className="Home">
-      <div className="lander">
-        <h1>QR Code Reader</h1>
+    <Layout>
+      <Form>
+        <Title>QR Code Reader</Title>
         <input type="file" onChange={handleImgUpload} />
         {imgDataLink && (
           <a href={imgDataLink} target="_blank" rel="noopener noreferrer">
             <img src={imgDataLink} alt="QR uploaded" />
           </a>
         )}
-      </div>
-
-      <div className="input-container">
-        <div className="input-field-container">
-          <label>
-            <p>Your Code</p>
-            <input
-              type="text"
-              className="input-field"
-              onChange={(event) => {
-                encryptKeySet(event.target.value);
-              }}
-            />
-          </label>
-        </div>
+        <br />
+        <hr />
+        <label>
+          <InputLabel>Your Code</InputLabel>
+          <Input
+            type="text"
+            onChange={(event) => {
+              encryptKeySet(event.target.value);
+            }}
+          />
+        </label>
         {data.error ? (
-          <p>Error: {data.error}</p>
+          <InputLabel>Error: {data.error}</InputLabel>
         ) : (
           <>
             <label>
-              <p>Name</p>
-              <input
-                id="name"
-                className="input-field summary"
-                value={data.name}
-                readOnly
-              />
+              <InputLabel>Name</InputLabel>
+              <Input value={data.name} readOnly />
             </label>
             <label>
-              <p>Date of Birth</p>
-              <input
-                id="dateOfBirth"
-                className="input-field summary"
-                value={data.dateOfBirth}
-                readOnly
-              />
+              <InputLabel>Date of Birth</InputLabel>
+              <Input value={data.dateOfBirth} readOnly />
             </label>
             <label>
-              <p>Alberta Health Number</p>
-              <input
-                id="albertaHealthNumber"
-                className="input-field summary"
-                value={data.albertaHealthNumber}
-                readOnly
-              />
+              <InputLabel>Alberta Health Number</InputLabel>
+              <Input value={data.albertaHealthNumber} readOnly />
             </label>
             <label>
-              <p>Email</p>
-              <input
-                id="email"
-                className="input-field summary"
-                value={data.email}
-                readOnly
-              />
+              <InputLabel>Email</InputLabel>
+              <Input value={data.email} readOnly />
             </label>
             <label>
-              <p>Phone</p>
-              <input
-                id="phone"
-                className="input-field summary"
-                value={data.phone}
-                readOnly
-              />
+              <InputLabel>Phone</InputLabel>
+              <Input value={data.phone} readOnly />
             </label>
             <label>
-              <p>Summary</p>
-              <input
-                id="summary"
-                className="input-field summary"
-                value={data.summary}
-                readOnly
-              />
+              <InputLabel>Summary</InputLabel>
+              <Input value={data.summary} readOnly />
             </label>
           </>
         )}
-      </div>
-    </div>
+      </Form>
+    </Layout>
   );
 }

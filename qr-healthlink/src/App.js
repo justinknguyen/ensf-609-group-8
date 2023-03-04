@@ -11,9 +11,16 @@ import { createGlobalStyle } from "styled-components";
 
 const MainContainer = createGlobalStyle`
   * {
+    border: 0 none transparent;
     box-sizing: border-box;
     font-family: 'DM Sans';
+    font-size: 16px;
     font-weight: 400;
+    margin: 0;
+    padding: 0;
+  }
+  input {
+    height: 100%;
   }
 `;
 
@@ -78,7 +85,12 @@ function App() {
         </Toolbar>
       </AppBar>
       <AppContext.Provider
-        value={{ isAuthenticated, userHasAuthenticated, isuserType, userType }}
+        value={{
+          isAuthenticated,
+          userHasAuthenticated,
+          isuserType,
+          userType,
+        }}
       >
         <Routes />
       </AppContext.Provider>
