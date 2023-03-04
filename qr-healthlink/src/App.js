@@ -19,6 +19,9 @@ const MainContainer = createGlobalStyle`
     margin: 0;
     padding: 0;
   }
+  input {
+    height: 100%;
+  }
 `;
 
 function App() {
@@ -82,9 +85,15 @@ function App() {
         </Toolbar>
       </AppBar>
       <AppContext.Provider
-        value={{ isAuthenticated, userHasAuthenticated, isuserType, userType }}
-      ></AppContext.Provider>
-      <Routes />
+        value={{
+          isAuthenticated,
+          userHasAuthenticated,
+          isuserType,
+          userType,
+        }}
+      >
+        <Routes />
+      </AppContext.Provider>
     </div>
   );
 }

@@ -19,13 +19,19 @@ export const Form = styled.div`
 `;
 
 export const InputTitle = styled.p`
+  color: #545454;
   font-weight: 500;
+  font-size: 1rem;
+  margin: 1rem 0;
 `;
 
 export const Input = styled.input`
   border: 1px solid #bfbfbf;
   border-radius: 0.25rem;
-  padding: 0 1rem;
+  color: #545454;
+  font-size: 1rem;
+  font-weight: 400;
+  padding: 0.25rem 1rem;
   width: 100%;
 `;
 
@@ -44,6 +50,7 @@ export const Centered = styled.div`
   justify-content: center;
 `;
 
+export const Sep = styled.p``;
 export const Code = styled.p``;
 
 export const Download = styled.a`

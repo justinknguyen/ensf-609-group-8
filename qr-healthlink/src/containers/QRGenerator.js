@@ -2,16 +2,15 @@ import QR from "qrcode";
 import { useEffect, useState } from "react";
 import CryptoJS from "crypto-js";
 import {
-  BigInput,
   Code,
   Download,
   Input,
   InputTitle,
   Layout,
+  Form,
   Title,
   Centered,
 } from "../styles";
-import { Form } from "react-router-dom";
 
 export default function QRGenerator() {
   const [name, nameSet] = useState("");
@@ -48,8 +47,6 @@ export default function QRGenerator() {
       qrSet(url);
     });
   }, [plaintext]);
-
-  const charCount = summary.length;
 
   return (
     <Layout>
@@ -118,7 +115,7 @@ export default function QRGenerator() {
           </label>
           <label>
             <InputTitle>
-              Summary (Characters Remaining {2909 - charCount})
+              Summary (Characters Remaining {2909 - summary.length})
             </InputTitle>
             <Input
               type={"text"}
