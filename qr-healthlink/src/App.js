@@ -19,7 +19,11 @@ const router = createHashRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <div>
+      <RouterProvider router={router} />
+    </div>
+  );
 }
 
 export default App;
