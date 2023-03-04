@@ -1,12 +1,12 @@
-import { React, useState, useRef, useEffect } from "react";
+import { React, useState, useEffect } from "react";
 import jsQR from "jsqr";
 import CryptoJS from "crypto-js";
 
 export default function QRReader() {
   const [imgDataLink, setimgDataLink] = useState(null);
   const [imgData, setimgData] = useState(null);
-  const [data, setData] = useState("");
-  const encryptKey = useRef("123");
+  const [data, setData] = useState({});
+  const [encryptKey, encryptKeySet] = useState("");
 
   const handleImgUpload = (e) => {
     const file = e.target.files[0];
@@ -15,12 +15,11 @@ export default function QRReader() {
     reader.onloadend = () => {
       setimgDataLink(reader.result);
       loadDataFromImage(reader.result);
-      decryptDataFromCode();
     };
     reader.readAsDataURL(file);
   };
 
-  const loadDataFromImage = (file, callback) => {
+  const loadDataFromImage = (file) => {
     const image = new Image();
 
     image.onload = function () {
@@ -43,24 +42,29 @@ export default function QRReader() {
     image.src = file;
   };
 
-  const decryptDataFromCode = () => {
+  useEffect(() => {
     if (!imgData) return;
-    if (encryptKey.current.value.length !== 6) return;
     const code = jsQR(imgData.data, imgData.width, imgData.height);
     if (code) {
       try {
-        const info = decryptString(code.data, encryptKey.current.value);
+        const info = CryptoJS.AES.decrypt(code.data, encryptKey).toString(
+          CryptoJS.enc.Utf8
+        );
         setData(JSON.parse(info));
       } catch (error) {
+        setData({
+          error: "invalid key",
+          name: "",
+          dateOfBirth: "",
+          albertaHealthNumber: "",
+          email: "",
+          phone: "",
+          summary: "",
+        });
         console.error(error);
       }
     }
-  };
-
-  const decryptString = (plaintext, key) => {
-    let decrypted = CryptoJS.AES.decrypt(plaintext, key);
-    return decrypted.toString(CryptoJS.enc.Utf8);
-  };
+  }, [encryptKey, imgData]);
 
   return (
     <div className="Home">
@@ -76,15 +80,18 @@ export default function QRReader() {
 
       <div className="input-container">
         <div className="input-field-container">
-          <label htmlFor="name">Your Code:</label>
-          <input
-            type="text"
-            id="name"
-            className="input-field"
-            ref={encryptKey}
-            onChange={decryptDataFromCode}
-          />
+          <label>
+            Your Code:
+            <input
+              type="text"
+              className="input-field"
+              onChange={(event) => {
+                encryptKeySet(event.target.value);
+              }}
+            />
+          </label>
         </div>
+        {data.error && <p>Error: {data.error}</p>}
         <label>
           <p>Name</p>
           <textarea
