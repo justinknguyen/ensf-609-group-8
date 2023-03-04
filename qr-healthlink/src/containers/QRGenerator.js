@@ -41,58 +41,73 @@ export default function QRGenerator() {
   return (
     <div>
       <h1>QRGenerator</h1>
-      {[
-        {
-          label: "Name",
-          value: name,
-          set: nameSet,
-          placeholder: "e.g. Jane Doe",
-        },
-        {
-          label: "Date of Birth",
-          value: dateOfBirth,
-          set: dateOfBirthSet,
-          type: "date",
-        },
-        {
-          label: "Alberta Health Number",
-          value: albertaHealthNumber,
-          set: albertaHealthNumberSet,
-          placeholder: "e.g. 123",
-        },
-        {
-          label: "Email",
-          value: email,
-          set: emailSet,
-          placeholder: "e.g. someone@gmail.com",
-        },
-        {
-          label: "Phone",
-          value: phone,
-          set: phoneSet,
-          placeholder: "e.g. +1 123 456 7890",
-        },
-        {
-          label: "Summary",
-          value: summary,
-          set: summarySet,
-          placeholder: "e.g. Leg fracture",
-        },
-      ].map(({ label, value, set, placeholder, type }) => (
-        <div>
-          <label>
-            <p>{label}</p>
-            <input
-              type={type || "text"}
-              value={value}
-              placeholder={placeholder}
-              onChange={(event) => {
-                set(event.target.value);
-              }}
-            />
-          </label>
-        </div>
-      ))}
+      <div>
+        <label>
+          <p>Name</p>
+          <input
+            type={"text"}
+            value={name}
+            placeholder={"e.g. Jane Doe"}
+            onChange={(event) => {
+              nameSet(event.target.value);
+            }}
+          />
+        </label>
+        <label>
+          <p>Date of Birth</p>
+          <input
+            type={"text"}
+            value={dateOfBirth}
+            onChange={(event) => {
+              dateOfBirthSet(event.target.value);
+            }}
+          />
+        </label>
+        <label>
+          <p>Alberta Health Number</p>
+          <input
+            type={"text"}
+            value={albertaHealthNumber}
+            placeholder={"e.g. 123"}
+            onChange={(event) => {
+              albertaHealthNumberSet(event.target.value);
+            }}
+          />
+        </label>
+        <label>
+          <p>Email</p>
+          <input
+            type={"text"}
+            value={email}
+            placeholder={"e.g. someone@gmail.com"}
+            onChange={(event) => {
+              emailSet(event.target.value);
+            }}
+          />
+        </label>
+        <label>
+          <p>Phone</p>
+          <input
+            type={"text"}
+            value={phone}
+            placeholder={"e.g. +1 123 456 7890"}
+            onChange={(event) => {
+              phoneSet(event.target.value);
+            }}
+          />
+        </label>
+        <label>
+          <p>Summary</p>
+          <input
+            type={"text"}
+            value={summary}
+            placeholder={"e.g. Leg fracture"}
+            onChange={(event) => {
+              summarySet(event.target.value);
+            }}
+          />
+        </label>
+      </div>
       <div>
         <p>Encryption code: {key}</p>
         <p>QR:</p>
