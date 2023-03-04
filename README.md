@@ -1,5 +1,8 @@
 # 2023 Software-Nursing Hackathon
 
+## Login Information
+Username: `user`  Password: `pass`
+
 ## Updating the Website
 
 Check if you have [Node.js and npm](https://nodejs.org/en/download/) installed by entering:
