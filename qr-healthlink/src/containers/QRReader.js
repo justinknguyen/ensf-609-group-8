@@ -1,4 +1,4 @@
-import { React, useState, useRef } from "react";
+import { React, useState, useRef, useEffect } from "react";
 import jsQR from "jsqr"
 import CryptoJS from 'crypto-js';
 
@@ -48,19 +48,17 @@ export default function QRReader(){
   
 	const decryptDataFromCode = () => {
 		if (!imgData) return
-		console.log(encryptKey.current.value.length)
 		if (encryptKey.current.value.length !== 6) return
 		const code = jsQR(imgData.data, imgData.width, imgData.height)
 		if (code) {
 			try {
 				const info = decryptString(code.data, encryptKey.current.value)
-				setData(info)
+				setData(JSON.parse(info))
 			} catch (error) {
 				console.error(error);
 			}
 		}
 	}
-
 	
 	const decryptString = (plaintext, key) => {
 	  let decrypted = CryptoJS.AES.decrypt(plaintext, key);
@@ -85,7 +83,7 @@ export default function QRReader(){
 				<input type="text" id="name" className="input-field" ref={encryptKey} onChange={decryptDataFromCode}/>
 			  </div>
 			  <label htmlFor="summary">Summary:</label>
-			  <textarea id="summary" className="input-field summary" value={data} readOnly/>
+			  <textarea id="summary" className="input-field summary" value={data.summary} readOnly/>
 		</div>
   
 	  </div>
