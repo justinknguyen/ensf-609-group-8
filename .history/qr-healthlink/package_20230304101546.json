@@ -26,15 +26,10 @@
   "homepage": "https://ensf-609-hackaton-group-8.github.io/ensf-609-group-8/",
   "private": true,
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "eject": "react-scripts eject",
     "start": "react-scripts start",
     "test": "react-scripts test"
   },
-  "version": "0.1.0",
-  "devDependencies": {
-    "gh-pages": "^5.0.0"
-  }
+  "version": "0.1.0"
 }
