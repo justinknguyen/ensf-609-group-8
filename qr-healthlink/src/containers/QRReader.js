@@ -52,15 +52,7 @@ export default function QRReader() {
         );
         setData(JSON.parse(info));
       } catch (error) {
-        setData({
-          error: "invalid key",
-          name: "",
-          dateOfBirth: "",
-          albertaHealthNumber: "",
-          email: "",
-          phone: "",
-          summary: "",
-        });
+        setData({ error: "invalid key" });
         console.error(error);
       }
     }
@@ -81,7 +73,7 @@ export default function QRReader() {
       <div className="input-container">
         <div className="input-field-container">
           <label>
-            Your Code:
+            <p>Your Code</p>
             <input
               type="text"
               className="input-field"
@@ -91,61 +83,66 @@ export default function QRReader() {
             />
           </label>
         </div>
-        {data.error && <p>Error: {data.error}</p>}
-        <label>
-          <p>Name</p>
-          <textarea
-            id="name"
-            className="input-field summary"
-            value={data.name}
-            readOnly
-          />
-        </label>
-        <label>
-          <p>Date of Birth</p>
-          <textarea
-            id="dateOfBirth"
-            className="input-field summary"
-            value={data.dateOfBirth}
-            readOnly
-          />
-        </label>
-        <label>
-          <p>Alberta Health Number</p>
-          <textarea
-            id="albertaHealthNumber"
-            className="input-field summary"
-            value={data.albertaHealthNumber}
-            readOnly
-          />
-        </label>
-        <label>
-          <p>Email</p>
-          <textarea
-            id="email"
-            className="input-field summary"
-            value={data.email}
-            readOnly
-          />
-        </label>
-        <label>
-          <p>Phone</p>
-          <textarea
-            id="phone"
-            className="input-field summary"
-            value={data.phone}
-            readOnly
-          />
-        </label>
-        <label>
-          <p>Summary</p>
-          <textarea
-            id="summary"
-            className="input-field summary"
-            value={data.summary}
-            readOnly
-          />
-        </label>
+        {data.error ? (
+          <p>Error: {data.error}</p>
+        ) : (
+          <>
+            <label>
+              <p>Name</p>
+              <input
+                id="name"
+                className="input-field summary"
+                value={data.name}
+                readOnly
+              />
+            </label>
+            <label>
+              <p>Date of Birth</p>
+              <input
+                id="dateOfBirth"
+                className="input-field summary"
+                value={data.dateOfBirth}
+                readOnly
+              />
+            </label>
+            <label>
+              <p>Alberta Health Number</p>
+              <input
+                id="albertaHealthNumber"
+                className="input-field summary"
+                value={data.albertaHealthNumber}
+                readOnly
+              />
+            </label>
+            <label>
+              <p>Email</p>
+              <input
+                id="email"
+                className="input-field summary"
+                value={data.email}
+                readOnly
+              />
+            </label>
+            <label>
+              <p>Phone</p>
+              <input
+                id="phone"
+                className="input-field summary"
+                value={data.phone}
+                readOnly
+              />
+            </label>
+            <label>
+              <p>Summary</p>
+              <input
+                id="summary"
+                className="input-field summary"
+                value={data.summary}
+                readOnly
+              />
+            </label>
+          </>
+        )}
       </div>
     </div>
   );
