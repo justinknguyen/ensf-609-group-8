@@ -22,56 +22,54 @@ function App() {
     <div>
       <AppBar position="static">
         <Toolbar className="navStyle">
-          {isAuthenticated ? ( 
+          {isAuthenticated ? (
             <>
-            <Typography
-              variant="h6"
-              className="navTitleStyle"
-              component={Link}
-              to="/ensf-609-group-8/home"
-            >
-              QR Health Link
-            </Typography>
-            <Button
-              className="navButtonStyle"
-              color="inherit"
-              component={Link}
-              to="/ensf-609-group-8/qr-generator"
-            >
-              QR Generator
-            </Button>
-            <Button
-              className="navButtonStyle"
-              color="inherit"
-              component={Link}
-              to="/ensf-609-group-8/qr-reader"
-            >
-              QR Reader
-            </Button>
-            <Button
-              className="navButtonStyle"
-              color="inherit"
-              component={Link}
-              onClick={handleLogout}
-              to="/ensf-609-group-8"
-            >
-              Logout
-            </Button>
+              <Typography
+                variant="h6"
+                className="navTitleStyle"
+                component={Link}
+                to="/ensf-609-group-8/home"
+              >
+                QR Health Link
+              </Typography>
+              <Button
+                className="navButtonStyle"
+                color="inherit"
+                component={Link}
+                to="/ensf-609-group-8/qr-generator"
+              >
+                QR Generator
+              </Button>
+              <Button
+                className="navButtonStyle"
+                color="inherit"
+                component={Link}
+                to="/ensf-609-group-8/qr-reader"
+              >
+                QR Reader
+              </Button>
+              <Button
+                className="navButtonStyle"
+                color="inherit"
+                component={Link}
+                onClick={handleLogout}
+                to="/ensf-609-group-8"
+              >
+                Logout
+              </Button>
             </>
-          ):(
+          ) : (
             <>
-            <Typography
-              variant="h6"
-              className="navTitleStyle"
-            >
-              QR Health Link
-            </Typography>
+              <Typography variant="h6" className="navTitleStyle">
+                QR Health Link
+              </Typography>
             </>
           )}
         </Toolbar>
       </AppBar>
-      <AppContext.Provider value={{ isAuthenticated, userHasAuthenticated, 
-                                    isuserType, userType}}>
+      <AppContext.Provider
+        value={{ isAuthenticated, userHasAuthenticated, isuserType, userType }}
+      >
         <Routes />
       </AppContext.Provider>
     </div>
