@@ -7,3 +7,11 @@
 font-family: "Open Sans", sans-serif;
 font-weight: 600;
 }
+
+.Home {
+    background-image: linear-gradient(to bottom, rgba(255,255,255,5), rgba(255,255,255,0)), url("../background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+  
