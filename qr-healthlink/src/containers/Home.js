@@ -1,11 +1,12 @@
 import React from "react";
+import { Title } from "../styles";
 import "./Home.css";
 
 export default function Home() {
   return (
     <div className="Home">
       <div className="lander">
-        <h1>QR Health Link</h1>
+        <Title>QR Health Link</Title>
         <p className="text-muted">
           By Ben, Bill, Garnet, Justin, Kevin, Laura, and Omar.
         </p>
