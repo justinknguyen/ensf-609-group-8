@@ -42,7 +42,7 @@ export default function Login() {
         } else {
           setIsSubmitted(true);
           userHasAuthenticated(true)
-          nav("/Hackathon-Group8/home");
+          nav("/ensf-609-group-8/home");
         }
       } else {
         // Username not found
