@@ -1,5 +1,6 @@
 import QR from "qrcode";
 import { useEffect, useState } from "react";
+import CryptoJS from "crypto-js";
 
 export default function QRGenerator() {
   const [name, nameSet] = useState("");
@@ -9,10 +10,10 @@ export default function QRGenerator() {
   const [phone, phoneSet] = useState("");
   const [summary, summarySet] = useState("");
 
-  let [qr, setQr] = useState(null);
+  let [qr, qrSet] = useState(null);
+  let [key, keySet] = useState(null);
 
-  // TODO: encrypt
-  const encrypted = JSON.stringify({
+  const plaintext = JSON.stringify({
     name,
     dateOfBirth,
     albertaHealthNumber,
@@ -22,10 +23,14 @@ export default function QRGenerator() {
   });
 
   useEffect(() => {
+    const key = Math.floor(100000 + Math.random() * 900000).toString();
+    const encrypted = CryptoJS.AES.encrypt(plaintext, key).toString();
+
+    keySet(key);
     QR.toDataURL(encrypted, (_, url) => {
-      setQr(url);
+      qrSet(url);
     });
-  }, [encrypted]);
+  }, [plaintext]);
 
   return (
     <div>
@@ -70,7 +75,7 @@ export default function QRGenerator() {
       ].map(({ label, value, set, placeholder, type }) => (
         <div>
           <label>
-            {label}
+            <p>{label}</p>
             <input
               type={type || "text"}
               value={value}
@@ -83,8 +88,9 @@ export default function QRGenerator() {
         </div>
       ))}
       <div>
+        <p>Encryption code: {key}</p>
         <p>QR:</p>
-        <img src={qr} />
+        <img alt="qr" src={qr} />
       </div>
     </div>
   );
