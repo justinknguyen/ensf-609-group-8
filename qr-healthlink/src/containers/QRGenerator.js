@@ -10,6 +10,8 @@ import {
   Form,
   Title,
   Centered,
+  Sep,
+  BigInput,
 } from "../styles";
 
 export default function QRGenerator() {
@@ -117,10 +119,11 @@ export default function QRGenerator() {
             <InputTitle>
               Summary (Characters Remaining {2909 - summary.length})
             </InputTitle>
-            <Input
+            <BigInput
               type={"text"}
               value={summary}
               maxLength={2909}
+              rows={4}
               placeholder={"Description of Patients Issues..."}
               onChange={(event) => {
                 summarySet(event.target.value);
@@ -129,7 +132,7 @@ export default function QRGenerator() {
           </label>
         </div>
         <br />
-        <hr />
+        <Sep />
         <div>
           <Centered>
             <InputTitle>Encryption code</InputTitle>
