@@ -1,9 +1,18 @@
 import QR from "qrcode";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const QRGenerator = () => {
   const [info, setInfo] = useState("");
   let [qr, setQr] = useState(null);
+
+  // TODO: encrypt
+  const encrypted = info;
+
+  useEffect(() => {
+    QR.toDataURL(encrypted, (_, url) => {
+      setQr(url);
+    });
+  }, [encrypted]);
 
   return (
     <div>
@@ -16,13 +25,6 @@ export const QRGenerator = () => {
           placeholder="info"
           onChange={(event) => {
             setInfo(event.target.value);
-
-            // TODO: encrypt
-            const encrypted = info;
-
-            QR.toDataURL(encrypted, (_, url) => {
-              setQr(url);
-            });
           }}
         />
       </label>
