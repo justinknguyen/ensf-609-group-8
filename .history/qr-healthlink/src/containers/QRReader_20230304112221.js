@@ -2,7 +2,7 @@ import { React, useState, useRef } from "react";
 import jsQR from "jsqr"
 import CryptoJS from 'crypto-js';
 
-export default function QRReader(){
+export default function QRReader() {
 
 	const [imgDataLink, setimgDataLink] = useState(null)
 	const [imgData, setimgData] = useState(null);
