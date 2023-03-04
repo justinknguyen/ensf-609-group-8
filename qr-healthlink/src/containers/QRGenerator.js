@@ -3,35 +3,50 @@ import { useEffect, useState } from "react";
 import CryptoJS from "crypto-js";
 import styled from "styled-components";
 
+const Layout = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+
 const Title = styled.h1`
   font-size: 2rem;
   font-weight: 500;
 `;
+
 const Form = styled.div`
-  align-content: "center";
-  display: "flex";
-  flex-direction: "column";
-  justify-content: "center";
+  /* display: "block"; */
+  max-width: 30rem;
+  width: 100%;
   padding: 1rem;
 `;
 
 const InputTitle = styled.p`
   font-weight: 500;
 `;
+
 const Input = styled.input`
   border-radius: 0.25rem;
   padding: 0 1rem;
   width: "100%";
 `;
+
 const Centered = styled.div`
   align-items: center;
   display: flex;
+  flex-direction: column;
   justify-content: center;
 `;
+
+const Code = styled.p`
+  /* font-size: 2rem; */
+`;
 const Download = styled.a`
-  background-color: #1976d2;
+  /* background-color: #1976d2; */
   border-radius: 0.75rem;
-  color: #ffffff;
+  color: #1976d2;
+  font-weight: 500;
   text-decoration: none;
   padding: 1rem;
 `;
@@ -73,99 +88,95 @@ export default function QRGenerator() {
   }, [plaintext]);
 
   return (
-    <Form>
-      <Title>QR Generator</Title>
-      <div>
-        <label>
-          <InputTitle>Name</InputTitle>
-          <Input
-            type={"text"}
-            value={name}
-            placeholder={"e.g. Jane Doe"}
-            onChange={(event) => {
-              nameSet(event.target.value);
-            }}
-          />
-        </label>
-        <label>
-          <InputTitle>Date of Birth</InputTitle>
-          <Input
-            type={"text"}
-            value={dateOfBirth}
-            onChange={(event) => {
-              dateOfBirthSet(event.target.value);
-            }}
-            style={{ width: "100%" }}
-          />
-        </label>
-        <label>
-          <InputTitle>Alberta Health Number</InputTitle>
-          <Input
-            type={"text"}
-            value={albertaHealthNumber}
-            placeholder={"e.g. 123"}
-            onChange={(event) => {
-              albertaHealthNumberSet(event.target.value);
-            }}
-            style={{ width: "100%" }}
-          />
-        </label>
-        <label>
-          <InputTitle>Email</InputTitle>
-          <Input
-            type={"text"}
-            value={email}
-            placeholder={"e.g. someone@gmail.com"}
-            onChange={(event) => {
-              emailSet(event.target.value);
-            }}
-            style={{ width: "100%" }}
-          />
-        </label>
-        <label>
-          <InputTitle>Phone</InputTitle>
-          <Input
-            type={"text"}
-            value={phone}
-            placeholder={"e.g. +1 123 456 7890"}
-            onChange={(event) => {
-              phoneSet(event.target.value);
-            }}
-            style={{ width: "100%" }}
-          />
-        </label>
-        <label>
-          <InputTitle>Summary</InputTitle>
-          <Input
-            type={"text"}
-            value={summary}
-            placeholder={"e.g. Leg fracture"}
-            onChange={(event) => {
-              summarySet(event.target.value);
-            }}
-            style={{ width: "100%" }}
-          />
-        </label>
-      </div>
-      <br />
-      <hr />
-      <div>
-        <Centered>
-          <InputTitle>Encryption code</InputTitle>
-        </Centered>
-        <Centered>{key}</Centered>
-        <Centered>
-          <InputTitle>QR:</InputTitle>
-        </Centered>
-        <Centered>
-          <img alt="qr" src={qr} />
-        </Centered>
-        <Centered>
-          <Download href={qr} download={`${key}.png`}>
-            Download
-          </Download>
-        </Centered>
-      </div>
-    </Form>
+    <Layout>
+      <Form>
+        <Title>QR Generator</Title>
+        <div>
+          <label>
+            <InputTitle>Name</InputTitle>
+            <Input
+              type={"text"}
+              value={name}
+              placeholder={"e.g. Jane Doe"}
+              onChange={(event) => {
+                nameSet(event.target.value);
+              }}
+            />
+          </label>
+          <label>
+            <InputTitle>Date of Birth</InputTitle>
+            <Input
+              type={"text"}
+              value={dateOfBirth}
+              onChange={(event) => {
+                dateOfBirthSet(event.target.value);
+              }}
+              style={{ width: "100%" }}
+            />
+          </label>
+          <label>
+            <InputTitle>Alberta Health Number</InputTitle>
+            <Input
+              type={"text"}
+              value={albertaHealthNumber}
+              placeholder={"e.g. 123"}
+              onChange={(event) => {
+                albertaHealthNumberSet(event.target.value);
+              }}
+              style={{ width: "100%" }}
+            />
+          </label>
+          <label>
+            <InputTitle>Email</InputTitle>
+            <Input
+              type={"text"}
+              value={email}
+              placeholder={"e.g. someone@gmail.com"}
+              onChange={(event) => {
+                emailSet(event.target.value);
+              }}
+              style={{ width: "100%" }}
+            />
+          </label>
+          <label>
+            <InputTitle>Phone</InputTitle>
+            <Input
+              type={"text"}
+              value={phone}
+              placeholder={"e.g. +1 123 456 7890"}
+              onChange={(event) => {
+                phoneSet(event.target.value);
+              }}
+              style={{ width: "100%" }}
+            />
+          </label>
+          <label>
+            <InputTitle>Summary</InputTitle>
+            <Input
+              type={"text"}
+              value={summary}
+              placeholder={"e.g. Leg fracture"}
+              onChange={(event) => {
+                summarySet(event.target.value);
+              }}
+              style={{ width: "100%" }}
+            />
+          </label>
+        </div>
+        <br />
+        <hr />
+        <div>
+          <Centered>
+            <InputTitle>Encryption code</InputTitle>
+            <Code>{key}</Code>
+            <InputTitle>QR</InputTitle>
+            <img alt="qr" src={qr} />
+            <Download href={qr} download={`${key}.png`}>
+              Download
+            </Download>
+          </Centered>
+        </div>
+      </Form>
+    </Layout>
   );
 }
