@@ -3,7 +3,7 @@ export const LandingPage = () => {
   return (
     <div>
       <h1>QR Health Link</h1>
-      <h2>By Ben, Bill, Garnet, Justin, and Kevin </h2>
+      <p>By Ben, Bill, Garnet, Justin, and Kevin </p>
       Pages:
       <ul>
         <li>
