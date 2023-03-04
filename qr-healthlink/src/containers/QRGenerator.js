@@ -29,7 +29,7 @@ const InputTitle = styled.p`
 const Input = styled.input`
   border-radius: 0.25rem;
   padding: 0 1rem;
-  width: "100%";
+  width: 100%;
 `;
 
 const Centered = styled.div`
@@ -111,7 +111,6 @@ export default function QRGenerator() {
               onChange={(event) => {
                 dateOfBirthSet(event.target.value);
               }}
-              style={{ width: "100%" }}
             />
           </label>
           <label>
@@ -123,7 +122,6 @@ export default function QRGenerator() {
               onChange={(event) => {
                 albertaHealthNumberSet(event.target.value);
               }}
-              style={{ width: "100%" }}
             />
           </label>
           <label>
@@ -135,7 +133,6 @@ export default function QRGenerator() {
               onChange={(event) => {
                 emailSet(event.target.value);
               }}
-              style={{ width: "100%" }}
             />
           </label>
           <label>
@@ -147,7 +144,6 @@ export default function QRGenerator() {
               onChange={(event) => {
                 phoneSet(event.target.value);
               }}
-              style={{ width: "100%" }}
             />
           </label>
           <label>
@@ -159,7 +155,6 @@ export default function QRGenerator() {
               onChange={(event) => {
                 summarySet(event.target.value);
               }}
-              style={{ width: "100%" }}
             />
           </label>
         </div>
