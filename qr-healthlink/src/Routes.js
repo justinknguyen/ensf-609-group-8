@@ -3,15 +3,17 @@ import { Route, Routes } from "react-router-dom";
 
 import NotFound from "./containers/NotFound";
 import Home from "./containers/Home";
+import Login from "./containers/Login";
 import QRGenerator from "./containers/QRGenerator";
 import QRReader from "./containers/QRReader";
 
 export default function Links() {
   return (
     <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/qr-generator" element={<QRGenerator />} />
-        <Route path="/qr-reader" element={<QRReader />} />
+        <Route path="/" element={<Login />} />
+        <Route path="/ensf-609-group-8" element={<Home />} />
+        <Route path="/ensf-609-group-8/qr-generator" element={<QRGenerator />} />
+        <Route path="/ensf-609-group-8/qr-reader" element={<QRReader />} />
         {
           /* Finally, catch all unmatched routes */
         }
