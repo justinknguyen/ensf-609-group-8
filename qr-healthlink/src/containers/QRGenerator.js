@@ -10,8 +10,8 @@ export default function QRGenerator() {
   const [phone, phoneSet] = useState("");
   const [summary, summarySet] = useState("");
 
-  let [qr, qrSet] = useState(null);
-  let [key, keySet] = useState(null);
+  const [qr, qrSet] = useState(null);
+  const [key, keySet] = useState(null);
 
   const plaintext = JSON.stringify({
     name,
@@ -24,7 +24,13 @@ export default function QRGenerator() {
 
   useEffect(() => {
     const key = Math.floor(100000 + Math.random() * 900000).toString();
-    const encrypted = CryptoJS.AES.encrypt(plaintext, key).toString();
+    // const salt = CryptoJS.lib.WordArray.random(128 / 8);
+    // const password = CryptoJS.PBKDF2(key, salt, {
+    //   keySize: 512 / 32,
+    //   iterations: 1000,
+    // });
+    const password = key;
+    const encrypted = CryptoJS.AES.encrypt(plaintext, password).toString();
 
     keySet(key);
     QR.toDataURL(encrypted, (_, url) => {
@@ -91,7 +97,12 @@ export default function QRGenerator() {
         <p>Encryption code: {key}</p>
         <p>QR:</p>
         <img alt="qr" src={qr} />
+        <div>
+          <a href={qr} download={`${key}.png`}>
+            Download
+          </a>
+        </div>
       </div>
     </div>
   );
-};
+}
