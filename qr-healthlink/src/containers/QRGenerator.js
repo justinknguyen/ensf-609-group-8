@@ -56,6 +56,14 @@ export default function QRGenerator() {
       return false
     }
 
+    const date = new Date(dateOfBirth);
+    const today = new Date()
+
+    if (date > today) {
+      alert("Date of Birth Cannot be in the Future")
+      return false
+    }
+
     if (albertaHealthNumber.toString().replace(/\D/g,'').length !== 9) {
       alert("Enter a Valid Alberta Health Number")
       return false
