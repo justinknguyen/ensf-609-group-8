@@ -1,4 +1,23 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
+
+export const Nav = styled.div`
+  align-items: center;
+  display: flex;
+  background-color: #1976d2;
+  color: #ffffff;
+  font-weight: 500;
+  position: static;
+  gap: 0 1rem;
+  justify-content: center;
+  padding: 1rem;
+`;
+
+export const NavButton = styled(Link)`
+  color: #ffffff;
+  font-weight: 500;
+  text-decoration: none;
+`;
 
 export const Layout = styled.div`
   align-items: center;
@@ -10,6 +29,7 @@ export const Layout = styled.div`
 export const Title = styled.h1`
   font-size: 2rem;
   font-weight: 500;
+  text-align: center;
 `;
 
 export const Form = styled.div`

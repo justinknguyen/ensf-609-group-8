@@ -1,13 +1,9 @@
 import React, { useState } from "react";
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
 import { Link, useNavigate } from "react-router-dom";
 import { AppContext } from "./lib/contextLib";
 import Routes from "./Routes";
-import "./App.css";
 import { createGlobalStyle } from "styled-components";
+import { Nav, NavButton } from "./styles";
 
 const MainContainer = createGlobalStyle`
   * {
@@ -37,53 +33,18 @@ function App() {
   return (
     <div>
       <MainContainer />
-      <AppBar position="static">
-        <Toolbar className="navStyle">
-          {isAuthenticated ? (
-            <>
-              <Typography
-                variant="h6"
-                className="navTitleStyle"
-                component={Link}
-                to="/ensf-609-group-8/home"
-              >
-                QR Health Link
-              </Typography>
-              <Button
-                className="navButtonStyle"
-                color="inherit"
-                component={Link}
-                to="/ensf-609-group-8/qr-generator"
-              >
-                QR Generator
-              </Button>
-              <Button
-                className="navButtonStyle"
-                color="inherit"
-                component={Link}
-                to="/ensf-609-group-8/qr-reader"
-              >
-                QR Reader
-              </Button>
-              <Button
-                className="navButtonStyle"
-                color="inherit"
-                component={Link}
-                onClick={handleLogout}
-                to="/ensf-609-group-8"
-              >
-                Logout
-              </Button>
-            </>
-          ) : (
-            <>
-              <Typography variant="h6" className="navTitleStyle">
-                QR Health Link
-              </Typography>
-            </>
-          )}
-        </Toolbar>
-      </AppBar>
+      <Nav>
+        {isAuthenticated ? (
+          <>
+            <NavButton to="/ensf-609-group-8/home">QR Health Link</NavButton>
+            <NavButton to="/ensf-609-group-8/qr-generator">Generate</NavButton>
+            <NavButton to="/ensf-609-group-8/qr-reader">Read</NavButton>
+            <NavButton to="/ensf-609-group-8">Logout</NavButton>
+          </>
+        ) : (
+          <NavButton to="/ensf-609-group-8/home">QR Health Link</NavButton>
+        )}
+      </Nav>
       <AppContext.Provider
         value={{
           isAuthenticated,
