@@ -7,10 +7,6 @@
   height: 60vh;
 }
 
-input[type="submit"]:hover {
-  background: blue;
-}
-
 .button-container {
   display: flex;
   justify-content: center;
