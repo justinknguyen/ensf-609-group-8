@@ -4,14 +4,14 @@ export const LandingPage = () => {
     <div>
       <h1>QR Health Link</h1>
       Pages:
-      <li>
-        <ul>
-          <Link to="/a">a</Link>
-        </ul>
-        <ul>
-          <Link to="/b">b</Link>
-        </ul>
-      </li>
+      <ul>
+        <li>
+          <Link to="/qr-generator">QR Generator</Link>
+        </li>
+        <li>
+          <Link to="/qr-reader">QR reader</Link>
+        </li>
+      </ul>
     </div>
   );
 };
