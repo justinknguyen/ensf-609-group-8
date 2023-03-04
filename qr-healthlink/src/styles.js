@@ -56,7 +56,7 @@ export const Sep = styled.p`
 
 export const Code = styled.p``;
 
-export const Download = styled.a`
+export const Download = `
   border-radius: 0.75rem;
   color: #1976d2;
   font-weight: 500;

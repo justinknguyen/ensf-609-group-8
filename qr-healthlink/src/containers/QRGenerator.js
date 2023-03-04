@@ -1,9 +1,9 @@
 import QR from "qrcode";
 import { useEffect, useState } from "react";
 import CryptoJS from "crypto-js";
+import "./QRGenerator.css";
 import {
   Code,
-  Download,
   Input,
   InputTitle,
   Layout,
@@ -49,6 +49,56 @@ export default function QRGenerator() {
       qrSet(url);
     });
   }, [plaintext]);
+
+  const checkValidInputs = () => {
+    if (!name) {
+      alert("Please Enter a Valid Name")
+      return false
+    }
+
+    if (albertaHealthNumber.toString().replace(/\D/g,'').length !== 9) {
+      alert("Enter a Valid Alberta Health Number")
+      return false
+    }
+
+    if (!email && !phone) {
+      alert("Either a Phone Number or Email Must be Entered")
+      return false
+    }
+
+    if (email) {
+      const validEmail = String(email).toLowerCase().match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
+      if (!validEmail){
+        alert("Enter a Valid Email")
+        return false
+      }
+    }
+
+    if (phone) {
+      if (phone.toString().replace(/\D/g,'').length !== 10){
+        alert("Enter a Valid phone number")
+        return false
+      }
+    }
+
+    if (!summary) {
+      alert("Enter Some Information in The Summary Box")
+      return false
+    }
+
+    return true
+
+  }
+
+  const handleDownload = () => {
+    if (!checkValidInputs()) return
+    const link = document.createElement("a");
+    link.download = key + '.png';
+    link.href = qr;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
 
   return (
     <Layout>
@@ -139,9 +189,9 @@ export default function QRGenerator() {
             <Code>{key}</Code>
             <InputTitle>QR</InputTitle>
             <img alt="qr" src={qr} />
-            <Download href={qr} download={`${key}.png`}>
+            <btn className="Download" onClick={handleDownload}>
               Download
-            </Download>
+            </btn>
           </Centered>
         </div>
       </Form>
