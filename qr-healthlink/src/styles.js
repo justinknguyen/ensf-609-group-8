@@ -76,9 +76,10 @@ export const Sep = styled.p`
 
 export const Code = styled.p``;
 
-export const Download = `
-  border-radius: 0.75rem;
-  color: #1976d2;
+export const Download = styled.button`
+  border-radius: 1rem;
+  background-color: #1976d2;
+  color: white;
   font-weight: 500;
   text-decoration: none;
   padding: 1rem;
