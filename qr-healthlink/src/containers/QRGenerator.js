@@ -1,55 +1,17 @@
 import QR from "qrcode";
 import { useEffect, useState } from "react";
 import CryptoJS from "crypto-js";
-import styled from "styled-components";
-
-const Layout = styled.div`
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`;
-
-const Title = styled.h1`
-  font-size: 2rem;
-  font-weight: 500;
-`;
-
-const Form = styled.div`
-  /* display: "block"; */
-  max-width: 30rem;
-  width: 100%;
-  padding: 1rem;
-`;
-
-const InputTitle = styled.p`
-  font-weight: 500;
-`;
-
-const Input = styled.input`
-  border-radius: 0.25rem;
-  padding: 0 1rem;
-  width: 100%;
-`;
-
-const Centered = styled.div`
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`;
-
-const Code = styled.p`
-  /* font-size: 2rem; */
-`;
-const Download = styled.a`
-  /* background-color: #1976d2; */
-  border-radius: 0.75rem;
-  color: #1976d2;
-  font-weight: 500;
-  text-decoration: none;
-  padding: 1rem;
-`;
+import {
+  BigInput,
+  Code,
+  Download,
+  Input,
+  InputTitle,
+  Layout,
+  Title,
+  Centered,
+} from "../styles";
+import { Form } from "react-router-dom";
 
 export default function QRGenerator() {
   const [name, nameSet] = useState("");
