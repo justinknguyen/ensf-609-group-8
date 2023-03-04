@@ -31,7 +31,12 @@ export const QRGenerator = () => {
     <div>
       <h1>QRGenerator</h1>
       {[
-        { label: "Name", value: name, set: nameSet },
+        {
+          label: "Name",
+          value: name,
+          set: nameSet,
+          placeholder: "e.g. Jane Doe",
+        },
         {
           label: "Date of Birth",
           value: dateOfBirth,
@@ -42,30 +47,34 @@ export const QRGenerator = () => {
           label: "Alberta Health Number",
           value: albertaHealthNumber,
           set: albertaHealthNumberSet,
+          placeholder: "e.g. 123",
         },
         {
           label: "Email",
           value: email,
           set: emailSet,
+          placeholder: "e.g. someone@gmail.com",
         },
         {
           label: "Phone",
           value: phone,
           set: phoneSet,
+          placeholder: "e.g. +1 123 456 7890",
         },
         {
           label: "Summary",
           value: summary,
           set: summarySet,
+          placeholder: "e.g. Leg fracture",
         },
-      ].map(({ label, value, set }) => (
+      ].map(({ label, value, set, placeholder, type }) => (
         <div>
           <label>
             {label}
             <input
-              type="text"
+              type={type || "text"}
               value={value}
-              placeholder="info"
+              placeholder={placeholder}
               onChange={(event) => {
                 set(event.target.value);
               }}
